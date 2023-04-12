@@ -117,6 +117,7 @@ int main(int argc, char *argv[])
     AVFormatContext *ps = NULL;
 
     // 打开文件, avformat可以直接打开rtsp,rtmp,http等协议
+    // avformat_open_input
     int res = avformat_open_input(&ps, file_name, NULL, NULL);
     if (res != 0)
     {

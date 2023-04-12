@@ -24,8 +24,8 @@ extern "C"
 using namespace std;
 DerryPlayer *player = nullptr;
 
-const char *data_source = "/home/marc/udp_ffmpeg_player/media/06.mp4";
-// const char *data_source = "rtsp://192.168.10.26/live/1";
+// const char *data_source = "/home/marc/udp_ffmpeg_player/media/06.mp4";
+const char *data_source = "rtsp://192.168.10.26/live/1";
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER; // 静态初始化 锁
 
 SDL_Window *window;

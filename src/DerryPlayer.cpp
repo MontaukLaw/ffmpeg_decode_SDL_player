@@ -45,9 +45,10 @@ void DerryPlayer::prepare_()
     // 字典（键值对）
     AVDictionary *dictionary = nullptr;
     // 设置超时（5秒）
-    av_dict_set(&dictionary, "timeout", "5000000", 0); // 单位微妙
-    int r = avformat_open_input(&formatContext, data_source, nullptr, &dictionary);
-
+    // av_dict_set(&dictionary, "timeout", "5000000", 0); // 单位微妙
+    // avformat_open_input
+    int r = avformat_open_input(&formatContext, data_source, nullptr, nullptr);
+    // int res = avformat_open_input(&ps, file_name, NULL, NULL);
     av_dict_free(&dictionary);
 
     if (r)
@@ -152,7 +153,7 @@ void DerryPlayer::prepare_()
     }
 
     // 设置解码格式
-    // codecContext->pix_fmt = AV_PIX_FMT_YUV420P; 
+    // codecContext->pix_fmt = AV_PIX_FMT_YUV420P;
     // cout << "获取到的格式 " << codecContext->pix_fmt << endl;
 
     /**
