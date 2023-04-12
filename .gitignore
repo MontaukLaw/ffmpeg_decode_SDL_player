@@ -1,0 +1,6 @@
+*.so
+*.mp4
+*.h264
+*.yuv
+/media/*
+/ffmpeg/libs/*

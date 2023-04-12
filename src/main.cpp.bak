@@ -1,0 +1,24 @@
+#include "user_comm.h"
+
+int main()
+{
+    std::cout << "sys start" << std::endl;
+
+    av_log_set_level(AV_LOG_DEBUG);
+
+    UDP_Receiver udpReceiver;
+    udpReceiver.init_rev();
+
+    // 初始化网络库
+    avformat_network_init();
+
+    // 反初始化网络库
+    avformat_network_deinit();
+
+    while (1)
+    {
+        sleep(1);
+    }
+
+    return 0;
+}
