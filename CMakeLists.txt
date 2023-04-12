@@ -32,6 +32,10 @@ target_link_libraries(ffmpeg_player
                 ${ffmpeg_libs_src}/libswscale.so
                 -lpthread)
 
+include_directories(/home/marc/SDL2/include/)                 
+include_directories(/home/marc/SDL2/build/include)       
+link_directories(/home/marc/SDL2/build)  
+
 add_executable(darry_demo 
         ${source_dir}/darry_demo.cpp
         ${source_dir}/DerryPlayer.cpp
@@ -39,21 +43,19 @@ add_executable(darry_demo
         )
 
 target_link_libraries(darry_demo
-                -Wl,--start-group
-                avcodec avfilter avformat avutil swresample swscale
-                -Wl,--end-group
-                # ${ffmpeg_libs_src}/libavcodec.so
-                # ${ffmpeg_libs_src}/libavdevice.so 
-                # ${ffmpeg_libs_src}/libavfilter.so 
-                # ${ffmpeg_libs_src}/libavformat.so 
-                # ${ffmpeg_libs_src}/libavutil.so 
-                # ${ffmpeg_libs_src}/libswresample.so
-                # ${ffmpeg_libs_src}/libswscale.so
-                -lpthread -lz)   
+                # -Wl,--start-group
+                # avcodec avfilter avformat avutil swresample swscale
+                # -Wl,--end-group
+                ${ffmpeg_libs_src}/libavcodec.so
+                ${ffmpeg_libs_src}/libavdevice.so 
+                ${ffmpeg_libs_src}/libavfilter.so 
+                ${ffmpeg_libs_src}/libavformat.so 
+                ${ffmpeg_libs_src}/libavutil.so 
+                ${ffmpeg_libs_src}/libswresample.so
+                ${ffmpeg_libs_src}/libswscale.so
+                -lpthread -lz -lSDL2 -lm -ldl 
+                -lstdc++ -lm -lasound -lx264)   
 
-include_directories(/home/marc/SDL2/include/)                 
-include_directories(/home/marc/SDL2/build/include)       
-link_directories(/home/marc/SDL2/build)   
 
 add_executable(ffmpeg_from_csdn ${source_dir}/ffmpeg_from_csdn.cpp) 
 target_link_libraries(ffmpeg_from_csdn

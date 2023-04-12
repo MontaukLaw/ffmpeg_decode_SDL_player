@@ -194,7 +194,8 @@ void VideoChannel::video_play()
         // 下面是输入环节
         codecContext->width,
         codecContext->height,
-        codecContext->pix_fmt, // 自动获取 xxx.mp4 的像素格式  AV_PIX_FMT_YUV420P // 写死的
+        codecContext->pix_fmt, 
+        // 自动获取 xxx.mp4 的像素格式  AV_PIX_FMT_YUV420P // 写死的
 
         // 下面是输出环节
         codecContext->width,

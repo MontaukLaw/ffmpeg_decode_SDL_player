@@ -270,7 +270,7 @@ int main(int argc, char *argv[])
     pthread_create(&pthid, NULL, Audio_decode, (void *)ps);
     pthread_detach(pthid); // 设置为分离属性
     /*创建窗口*/
-    SDL_Window *window = SDL_CreateWindow("SDL_VIDEO", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);
+    SDL_Window *window = SDL_CreateWindow("SDL_VIDEO", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
     /*创建渲染器*/
     SDL_Renderer *render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     /*清空渲染器*/
