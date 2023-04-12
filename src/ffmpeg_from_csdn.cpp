@@ -83,12 +83,13 @@ void *Audio_decode(void *arg)
             audio_chunk = (uint8_t *)audio_buff; // 指向音频数据 (PCM data)
             while (audio_len > 0)
             {
-            }                       // 等待数据处理完
-            audio_len = audio_size; // 音频长度
+            }                                        // 等待数据处理完
+            audio_len = audio_size;                  // 音频长度
             audio_pos = (unsigned char *)audio_buff; // 当前播放位置
         }
     }
 }
+
 int main(int argc, char *argv[])
 {
     if (argc != 2)
@@ -96,16 +97,26 @@ int main(int argc, char *argv[])
         printf("格式:./app 文件名\n");
         return 0;
     }
+    // 获取媒体文件名
     char *file_name = argv[1];
+    printf("name:%s\n", file_name);
+
     /*SDL初始化*/
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER);
-    printf("pth:%s\n", avcodec_configuration()); /*获取ffmpeg配置信息*/
-    /*初始化所有组件*/
+
+    /*获取ffmpeg配置信息*/
+    printf("pth:%s\n", avcodec_configuration());
+
+    /* 初始化所有组件 旧版本的要求 */
     // av_register_all();
+
     /*打开文件*/
-    AVCodecContext *pCodecCtx;  // 解码器上下文
-    AVFormatContext *ps = NULL; // 音视频封装格式结构体信息
-    printf("name:%s\n", file_name);
+    // 解码器上下文
+    AVCodecContext *pCodecCtx;
+    // 音视频封装格式结构体信息
+    AVFormatContext *ps = NULL;
+
+    // 打开文件, avformat可以直接打开rtsp,rtmp,http等协议
     int res = avformat_open_input(&ps, file_name, NULL, NULL);
     if (res != 0)
     {

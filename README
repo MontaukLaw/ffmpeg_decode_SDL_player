@@ -1,2 +1,10 @@
 去掉了ffmpeg的动态库, github没法上传大文件, 这个库居然有70M
 去掉了media文件夹里面的视频.
+
+编译:
+cmake --build build
+
+运行:
+./build/ffmpeg_from_csdn filename
+
+尝试过直接解码rtsp, 可以, 但是阻塞了...要改成异步才行.
